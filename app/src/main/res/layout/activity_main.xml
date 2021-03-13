@@ -45,7 +45,7 @@
                     android:layout_width="445px"
                     android:layout_height="512px"
                     android:padding="0dp"
-                    android:src="@drawable/amnhac"/>
+                    android:src="@drawable/ranzer"/>
             </LinearLayout>
 
             <LinearLayout

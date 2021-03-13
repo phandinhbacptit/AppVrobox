@@ -55,21 +55,18 @@ import lecho.lib.hellocharts.view.PieChartView;
 
 public class Control extends AppCompatActivity {
     ImageButton backCtrBtn;
-    Button connectBtn, btnSendData;
+    ImageButton btnOn, btnOff, connectBtn;
 
     private static final int REQUEST_ENABLE_BT = 1;
-
-
     BluetoothAdapter bluetoothAdapter;
-
 //    ArrayList<BluetoothDevice> pairedDeviceArrayList;
 
-    TextView textStatus;
     ListView listViewPairedDevice;
     LinearLayout inputPane;
-    EditText inputField, getData;
     Button btnSend;
 
+    byte [] buf_on = {(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x01, 0x00, (byte)0xff, (byte)0xff,(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x02, (byte)0xff, (byte)0xf1, (byte)0xff,  };
+    byte [] buf_off = {(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x00, 0x00, 0x00, 0x00 };
 
 //    ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
@@ -95,11 +92,10 @@ public class Control extends AppCompatActivity {
             );
         }
 
-        btnSendData = (Button)findViewById(R.id.btnSend);
-        getData = (EditText)findViewById(R.id.inputData);
+        btnOn = (ImageButton)findViewById(R.id.btnOn);
+        btnOff = (ImageButton)findViewById(R.id.btnOff);
         backCtrBtn = (ImageButton) findViewById(R.id.btnCtrBack);
-        connectBtn = (Button)findViewById(R.id.btnConnect);
-        textStatus = (TextView)findViewById(R.id.info);
+        connectBtn = (ImageButton)findViewById(R.id.btnConnectBluetooth);
 
         /* Handle back button when clicked */
         backCtrBtn.setOnClickListener(new View.OnClickListener() {
@@ -117,20 +113,37 @@ public class Control extends AppCompatActivity {
                     Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
                 }
-//            setup();
+           setup();
             }
         });
 
-        btnSendData.setOnClickListener(new View.OnClickListener() {
+//        btnSendData.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(myThreadConnected!=null){
+////                    byte[] bytesToSend = getData.getText().toString().getBytes();
+////                    myThreadConnected.write(bytesToSend);
+//              }
+//            }
+//        });
+
+        btnOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(myThreadConnected!=null){
-                    byte[] bytesToSend = getData.getText().toString().getBytes();
-                    myThreadConnected.write(bytesToSend);
-              }
+                    myThreadConnected.write(buf_on);
+                }
             }
         });
 
+//        btnOff.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(myThreadConnected!=null){
+//                    myThreadConnected.write(buf_off);
+//                }
+//            }
+//        });
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
             Toast.makeText(Control.this,
                     "FEATURE_BLUETOOTH NOT support",
@@ -155,7 +168,6 @@ public class Control extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
-
     // Create a BroadcastReceiver for ACTION_FOUND
 //    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
 //        public void onReceive(Context context, Intent intent) {
@@ -181,7 +193,6 @@ public class Control extends AppCompatActivity {
 //    };
 
     private void setup( ) {
-
         /*bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         //check to see if there is BT on the Android device at all
         if (bluetoothAdapter == null){
@@ -199,13 +210,9 @@ public class Control extends AppCompatActivity {
         */
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
-//            pairedDeviceArrayList = new ArrayList<BluetoothDevice>();
-
             for (BluetoothDevice device : pairedDevices) {
-//                pairedDeviceArrayList.add(device);
-
-                if (device.getName().equals("ESP32_LED_Control")) {
-                    //Toast.makeText(Control.this,"Start thread connect to bluetooth device", Toast.LENGTH_LONG).show();
+                if (device.getName().equals("Robox")) {
+                    Toast.makeText(Control.this,"Start thread connect to bluetooth device", Toast.LENGTH_LONG).show();
                     myThreadConnectBTdevice = new ThreadConnectBTdevice(device);
                     myThreadConnectBTdevice.start();
                 }
@@ -250,7 +257,7 @@ public class Control extends AppCompatActivity {
             bluetoothDevice = device;
             try {
                 bluetoothSocket = device.createRfcommSocketToServiceRecord(myUUID);
-                textStatus.setText("bluetoothSocket: \n" + bluetoothSocket);
+//                textStatus.setText("bluetoothSocket: \n" + bluetoothSocket);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -264,16 +271,7 @@ public class Control extends AppCompatActivity {
                 success = true;
             } catch (IOException e) {
                 e.printStackTrace();
-
                 final String eMessage = e.getMessage();
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-//                        textStatus.setText("something wrong bluetoothSocket.connect(): \n" + eMessage);
-                    }
-                });
-
                 try {
                     bluetoothSocket.close();
                 } catch (IOException e1) {
@@ -281,29 +279,15 @@ public class Control extends AppCompatActivity {
                     e1.printStackTrace();
                 }
             }
-
-            if(success) {
+            if (success) {
                 //connect successful
-                final String msgconnected = "connect successful:\n"
-                        + "BluetoothSocket: " + bluetoothSocket + "\n"
-                        + "BluetoothDevice: " + bluetoothDevice;
-
-                runOnUiThread(new Runnable(){
-
-                    @Override
-                    public void run() {
-//                        textStatus.setText(msgconnected);
-//
-//                        listViewPairedDevice.setVisibility(View.GONE);
-//                       inputPane.setVisibility(View.VISIBLE);
-                    }});
-
+                final String msgconnected = "connect successful: " + "BluetoothDevice: " + bluetoothDevice;
+//                textStatus.setText(msgconnected);
                 startThreadConnected(bluetoothSocket);
-            }else{
-                //fail
+            }
+            else {//fail
             }
         }
-
         public void cancel()
         {
             Toast.makeText(getApplicationContext(), "close bluetoothSocket", Toast.LENGTH_LONG).show();
@@ -352,29 +336,23 @@ public class Control extends AppCompatActivity {
                 try {
                     bytes = connectedInputStream.read(buffer);
                     String strReceived = new String(buffer, 0, bytes);
-//                    final String msgReceived = String.valueOf(bytes) +
-//                            " bytes received:\n"
-//                            + strReceived;
-//                    Log.i("ctr", strReceived);
-                    runOnUiThread(new Runnable(){
-
+                    final String msgReceived = String.valueOf(bytes) + " bytes received:\n" + strReceived;
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            textStatus.setText(msgReceived);
+//                           textStatus.setText(msgReceived);
                         }});
 
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
-
-//                    final String msgConnectionLost = "Connection lost:\n"
-//                            + e.getMessage();
-                   runOnUiThread(new Runnable(){
-
-                        @Override
-                        public void run() {
-//                            textStatus.setText(msgConnectionLost);
-                        }});
+                    final String msgConnectionLost = "Connection lost:\n"+ e.getMessage();
+//                   runOnUiThread(new Runnable(){
+//
+//                        @Override
+//                        public void run() {
+//                           textStatus.setText(msgConnectionLost);
+//                        }});
                 }
             }
         }
