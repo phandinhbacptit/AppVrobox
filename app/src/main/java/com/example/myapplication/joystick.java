@@ -82,10 +82,13 @@ public class joystick {
                 draw.position(x, y);
                 draw();
             } else {
-                mLayout.removeView(draw);
+               mLayout.removeView(draw);
             }
         } else if(arg1.getAction() == MotionEvent.ACTION_UP) {
             mLayout.removeView(draw);
+            distance = 0;
+            draw.position(params.width / 2, params.height / 2);
+            draw();
             touch_state = false;
         }
     }

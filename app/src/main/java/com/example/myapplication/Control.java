@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -35,8 +36,10 @@ import android.widget.EditText;
 //import android.support.v4.app.ActivityCompat;
 //import android.support.v4.content.ContextCompat;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import android.view.View.OnTouchListener;
 
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
@@ -60,10 +64,10 @@ public class Control extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
     BluetoothAdapter bluetoothAdapter;
 //    ArrayList<BluetoothDevice> pairedDeviceArrayList;
-
-    ListView listViewPairedDevice;
-    LinearLayout inputPane;
-    Button btnSend;
+    RelativeLayout layout_joystick;
+    ImageView image_joystick, image_border;
+    TextView textView1, textView2, textView3, textView4, textView5;
+    joystick js;
 
     byte [] buf_on = {(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x01, 0x00, (byte)0xff, (byte)0xff,(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x02, (byte)0xff, (byte)0xf1, (byte)0xff,  };
     byte [] buf_off = {(byte)0xff, 0x55, 0x09, 0x00, 0x02, 0x08, 0x07, 0x02, 0x00, 0x00, 0x00, 0x00 };
@@ -91,6 +95,13 @@ public class Control extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
             );
         }
+        textView1 = (TextView)findViewById(R.id.textView1);
+        textView2 = (TextView)findViewById(R.id.textView2);
+        textView3 = (TextView)findViewById(R.id.textView3);
+        textView4 = (TextView)findViewById(R.id.textView4);
+        textView5 = (TextView)findViewById(R.id.textView5);
+
+        layout_joystick = (RelativeLayout)findViewById(R.id.layout_joystick);
 
         btnOn = (ImageButton)findViewById(R.id.btnOn);
         btnOff = (ImageButton)findViewById(R.id.btnOff);
@@ -162,6 +173,55 @@ public class Control extends AppCompatActivity {
             finish();
             return;
         }
+
+        js = new joystick(getApplicationContext(), layout_joystick, R.drawable.vrobox);
+        js.setStickSize(180, 180);
+        js.setLayoutSize(650, 650);
+        js.setLayoutAlpha(255);
+        js.setStickAlpha(255);
+        js.setOffset(90);
+        js.setMinimumDistance(50);
+
+        layout_joystick.setOnTouchListener(new OnTouchListener() {
+            public boolean onTouch(View arg0, MotionEvent arg1) {
+                js.drawStick(arg1);
+                if(arg1.getAction() == MotionEvent.ACTION_DOWN
+                        || arg1.getAction() == MotionEvent.ACTION_MOVE) {
+                    textView1.setText("X : " + String.valueOf(js.getX()));
+                    textView2.setText("Y : " + String.valueOf(js.getY()));
+                    textView3.setText("Angle : " + String.valueOf(js.getAngle()));
+                    textView4.setText("Distance : " + String.valueOf(js.getDistance()));
+
+                    int direction = js.get8Direction();
+                    if(direction == joystick.STICK_UP) {
+                        textView5.setText("Direction : Up");
+                    } else if(direction == joystick.STICK_UPRIGHT) {
+                        textView5.setText("Direction : Up Right");
+                    } else if(direction == joystick.STICK_RIGHT) {
+                        textView5.setText("Direction : Right");
+                    } else if(direction == joystick.STICK_DOWNRIGHT) {
+                        textView5.setText("Direction : Down Right");
+                    } else if(direction == joystick.STICK_DOWN) {
+                        textView5.setText("Direction : Down");
+                    } else if(direction == joystick.STICK_DOWNLEFT) {
+                        textView5.setText("Direction : Down Left");
+                    } else if(direction == joystick.STICK_LEFT) {
+                        textView5.setText("Direction : Left");
+                    } else if(direction == joystick.STICK_UPLEFT) {
+                        textView5.setText("Direction : Up Left");
+                    } else if(direction == joystick.STICK_NONE) {
+                        textView5.setText("Direction : Center");
+                    }
+                } else if(arg1.getAction() == MotionEvent.ACTION_UP) {
+                    textView1.setText("X :");
+                    textView2.setText("Y :");
+                    textView3.setText("Angle :");
+                    textView4.setText("Distance :");
+                    textView5.setText("Direction :");
+                }
+                return true;
+            }
+        });
     }
 
     @Override
