@@ -14,6 +14,7 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:id ="@+id/layoutHeader"
        android:orientation="horizontal">
 
       <ImageButton
@@ -33,193 +34,553 @@
           android:background="@drawable/bluetooth_off" />
 
    </RelativeLayout>
+    <!--- ***************************Start layout Top Body******************************************-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id ="@+id/layoutBodyTop"
+        android:orientation="horizontal">
+        <!--- _______Start layout Set command to sensor Ring, Matrix, Buzzer, RGB________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutSetModule"
+            android:orientation ="horizontal">
+            <!--- _______Start layout , Matrix, RGB________-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutMatrixRgb"
+                android:layout_marginTop="28dp">
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/btn_ledmatrix"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/off" />
 
-      <RelativeLayout
-          android:layout_width="280dp"
-          android:layout_height="280dp"
-          android:id="@+id/layout_joystick"
-          android:layout_alignParentLeft="true"
-          android:layout_marginTop="30dp"
-          android:layout_marginLeft="40dp"
-          android:background="@drawable/joystick_background1">
-         /*Design joystick*/
+                    <ImageButton
+                        android:id="@+id/btn_ledRGB"
+                        android:layout_width="24pt"
+                        android:layout_height="24pt"
+                        android:layout_below="@id/btn_ledmatrix"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/off" />
+            </RelativeLayout>
+            <!--- ______Stop layout , Matrix, RGB________-->
 
-      </RelativeLayout>
-      <RelativeLayout
-          android:id="@+id/linearLayout1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@+id/layout_joystick"
-          android:layout_marginLeft="50dp"
-          android:orientation="vertical">
+            <!--- ______Start layout  Ring, Buzzer________-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutRingBuzzer"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/layoutMatrixRgb">
 
-         <TextView
-             android:id="@+id/textView1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentTop="true"
-             android:text="X"
-             android:textColor="#444444"
-             android:textSize="20dp" />
+                <ImageButton
+                    android:id="@+id/btn_ringled"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/off" />
 
-         <TextView
-             android:id="@+id/textView2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/textView1"
-             android:text="Y"
-             android:textColor="#444444"
-             android:textSize="20dp" />
-         <TextView
-             android:id="@+id/textView3"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/textView2"
-             android:text="Angle"
-             android:textColor="#444444"
-             android:textSize="20dp" />
+                <ImageButton
+                    android:id="@+id/btn_buzzer"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_below="@id/btn_ringled"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/off" />
+            </RelativeLayout>
+            <!--- ______Stop layout  Ring, Buzzer________-->
+            <!--- ______Stop layout Set command to sensor Ring, Matrix, Buzzer, RGB________-->
 
-         <TextView
-             android:id="@+id/textView4"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/textView3"
-             android:text="Distance"
-             android:textColor="#444444"
-             android:textSize="20dp" />
-
-         <TextView
-             android:id="@+id/textView5"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/textView4"
-             android:text="Direction"
-             android:textColor="#444444"
-             android:textSize="20dp" />
-         
-      </RelativeLayout>
-
-      <RelativeLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@+id/linearLayout1"
-          android:layout_marginLeft="50dp">
-
-         <RelativeLayout
-             android:id ="@+id/layoutMode"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal">
+        </RelativeLayout>
+        <!--- _______Start layout Button, Soundsensor________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutButton"
+            android:layout_marginTop="0dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true">
 
             <ImageButton
-                android:id="@+id/btnFollowingLine"
-                android:layout_width="45pt"
-                android:layout_height="45pt"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/line_mode"
-                android:text="Line" />
+                android:id="@+id/btnMode1"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode1" />
+            <ImageButton
+                android:id="@+id/btnMode2"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnMode1"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode2" />
+            <ImageButton
+                android:id="@+id/btnMode3"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnMode2"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode3" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutSoundSensor"
+            android:layout_below="@+id/layoutButton"
+            android:layout_marginTop="1dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true" >
+            <ImageButton
+                android:id="@+id/btnSound"
+                android:layout_width="62pt"
+                android:layout_height="12pt"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/sound_sensor" />
+        </RelativeLayout>
+        <!--- _____Start layout contain mode working of Ranzer_______-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutModeOperation"
+            android:orientation ="horizontal"
+            android:layout_toRightOf="@id/layoutButton"
+            android:layout_marginRight="0dp"
+            android:layout_alignParentRight="true" >
+
+            <!--- ______Start layout Round-TVC mode________-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutRoundTVC"
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="25dp"
+                android:layout_alignParentRight="true" >
+
+                <ImageButton
+                    android:id="@+id/btnRoundMode"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/off" />
+
+                <ImageButton
+                    android:id="@+id/btnSRF05Mode"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_below="@id/btnRoundMode"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/off" />
+            </RelativeLayout>
+            <!--- ______Stop layout Round-TVC mode________-->
+
+            <!--- _______Start layout Sound Line_______-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutSoundLine"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@id/layoutRoundTVC">
+
+                <ImageButton
+                    android:id="@+id/btnSoundMode"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/off" />
+
+                <ImageButton
+                    android:id="@+id/btnLineMode"
+                    android:layout_width="24pt"
+                    android:layout_height="24pt"
+                    android:layout_below="@id/btnSoundMode"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/off" />
+            </RelativeLayout>
+            <!--- ______Stop layout Sound -line Mode________-->
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+<!-- *****************************************Start layout bottomBody**********************************-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id ="@+id/layoutBodyBottom"
+        android:orientation="horizontal">
+
+        <!--- ____________Start layout Joystick________-->
+          <RelativeLayout
+              android:layout_width="120dp"
+              android:layout_height="220dp"
+              android:id="@+id/layout_joystick"
+              android:layout_alignParentLeft="true"
+              android:layout_marginTop="20dp"
+              android:layout_marginLeft="25dp"
+              android:background="@drawable/joystick_background1">
+             /*Design joystick*/
+          </RelativeLayout>
+        <!--- _____________End layout Joystick________-->
+        <!--- ____________Start layout Read Line, SRF05, COLOR, LIGHT sensor________-->
+        <!--- ____________Start layout Read Line Sensor________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutGetLine"
+            android:layout_marginTop="0dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true">
 
             <ImageButton
-                android:id="@+id/btnCircleLine"
-                android:layout_width="45pt"
-                android:layout_height="45pt"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_mode"
-                android:text="Circle" />
+                android:id="@+id/btnIconLine"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/line1" />
+            <TextView
+                android:id="@+id/text_line"
+                android:layout_width="50pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnIconLine"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode2" />
+        </RelativeLayout>
+        <!--- ____________Start layout Read SRF05 Sensor________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutGetSrf05"
+            android:layout_marginTop="45dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true">
 
             <ImageButton
-                android:id="@+id/btnAvoidObstacles"
-                android:layout_width="45pt"
-                android:layout_height="45pt"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/sound_mode"
-                android:text="Avoid" />
+                android:id="@+id/btnIconSrf05"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/srf05" />
+            <TextView
+                android:id="@+id/text_srf05"
+                android:layout_width="50pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnIconSrf05"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode2" />
+        </RelativeLayout>
+        <!--- ____________Start layout Read Color Sensor________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutGetColor"
+            android:layout_marginTop="90dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true">
 
-         </RelativeLayout>
-
-         <RelativeLayout
-             android:id ="@+id/layoutLed"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below = "@id/layoutMode"
-             android:layout_marginLeft="60dp"
-             android:layout_marginRight="60dp">
             <ImageButton
-                android:id="@+id/btnOn"
-                android:layout_width="45pt"
-                android:layout_height="45pt"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rocket" />
+                android:id="@+id/btnIconColor"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/color" />
+            <TextView
+                android:id="@+id/text_color"
+                android:layout_width="50pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnIconColor"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode2" />
+        </RelativeLayout>
+        <!--- ____________Start layout Read Light  Sensor________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutGetLight"
+            android:layout_marginTop="135dp"
+            android:orientation ="horizontal"
+            android:layout_centerHorizontal="true">
+
             <ImageButton
-                android:id="@+id/btnOff"
-                android:layout_width="45pt"
-                android:layout_height="45pt"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/on" />
-         </RelativeLayout>
+                android:id="@+id/btnIconLight"
+                android:layout_width="20pt"
+                android:layout_height="12pt"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/light" />
+            <TextView
+                android:id="@+id/text_light"
+                android:layout_width="50pt"
+                android:layout_height="12pt"
+                android:layout_toRightOf="@+id/btnIconLight"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/mode2" />
+        </RelativeLayout>
+        <!--- __________________End_________________________-->
 
+        <!--- ____________Start layout Servo_____________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutServo"
+            android:orientation ="horizontal"
+            android:layout_marginRight="0dp"
+            android:layout_alignParentRight="true" >
 
-      </RelativeLayout>
+            <SeekBar
+                android:id="@+id/sbServo1"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"/>
 
-   </RelativeLayout>
+            <SeekBar
+                android:id="@+id/sbServo2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"/>
 
+        </RelativeLayout>
+    </RelativeLayout>
 
+<!--   <RelativeLayout-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="wrap_content">-->
 
+<!--      <RelativeLayout-->
+<!--          android:layout_width="280dp"-->
+<!--          android:layout_height="280dp"-->
+<!--          android:id="@+id/layout_joystick"-->
+<!--          android:layout_alignParentLeft="true"-->
+<!--          android:layout_marginTop="30dp"-->
+<!--          android:layout_marginLeft="40dp"-->
+<!--          android:background="@drawable/joystick_background1">-->
+<!--         /*Design joystick*/-->
+
+<!--      </RelativeLayout>-->
+<!--      <RelativeLayout-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_toRightOf="@+id/layout_joystick"-->
+<!--          android:layout_marginLeft="20dp">-->
+
+<!--         <RelativeLayout-->
+<!--             android:id ="@+id/layoutMode"-->
+<!--             android:layout_width="match_parent"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:orientation="horizontal">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btnFollowingLine"-->
+<!--                android:layout_width="45pt"-->
+<!--                android:layout_height="45pt"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/line_mode"-->
+<!--                android:text="Line" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btnCircleLine"-->
+<!--                android:layout_width="45pt"-->
+<!--                android:layout_height="45pt"-->
+<!--                android:layout_toRightOf="@+id/btnFollowingLine"-->
+<!--                android:layout_marginLeft="70dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/round_mode"-->
+<!--                android:text="Circle" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btnAvoidObstacles"-->
+<!--                android:layout_width="45pt"-->
+<!--                android:layout_height="45pt"-->
+<!--                android:layout_toRightOf="@+id/btnCircleLine"-->
+<!--                android:layout_marginLeft="70dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/sound_mode"-->
+<!--                android:text="Avoid" />-->
+
+<!--         </RelativeLayout>-->
+
+<!--         <RelativeLayout-->
+<!--             android:id ="@+id/layoutOut"-->
+<!--             android:layout_width="match_parent"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:layout_below = "@id/layoutMode">-->
+<!--&lt;!&ndash;             android:layout_marginLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;             android:layout_marginRight="60dp">&ndash;&gt;-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_dance"-->
+<!--                android:layout_width="38pt"-->
+<!--                android:layout_height="38pt"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rocket" />-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_led"-->
+<!--                android:layout_width="38pt"-->
+<!--                android:layout_height="38pt"-->
+<!--                android:layout_toRightOf="@+id/btn_dance"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/off" />-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_buzzer"-->
+<!--                android:layout_width="38pt"-->
+<!--                android:layout_height="38pt"-->
+<!--                android:layout_toRightOf="@+id/btn_led"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/btn_led_ctr" />-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_ringled"-->
+<!--                android:layout_width="38pt"-->
+<!--                android:layout_height="38pt"-->
+<!--                android:layout_toRightOf="@+id/btn_buzzer"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/off" />-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_ledmatrix"-->
+<!--                android:layout_width="38pt"-->
+<!--                android:layout_height="38pt"-->
+<!--                android:layout_toRightOf="@+id/btn_ringled"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/off" />-->
+<!--         </RelativeLayout>-->
+<!--          <RelativeLayout-->
+<!--              android:id ="@+id/layoutIn"-->
+<!--              android:layout_width="match_parent"-->
+<!--              android:layout_height="wrap_content"-->
+<!--              android:orientation="horizontal"-->
+<!--              android:layout_below = "@id/layoutOut">-->
+
+<!--              <RelativeLayout-->
+<!--                  android:id ="@+id/layoutSrf05"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:orientation="vertical">-->
+<!--                  <ImageButton-->
+<!--                      android:id="@+id/btn_srf05"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="20pt"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="20dp"-->
+<!--                      android:background="@drawable/srf05_off" />-->
+<!--                  <TextView-->
+<!--                      android:id="@+id/text_srf05"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="25pt"-->
+<!--                      android:layout_below="@id/btn_srf05"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="8dp"-->
+<!--                      android:text="SRF05"/>-->
+<!--              </RelativeLayout>-->
+
+<!--              <RelativeLayout-->
+<!--                  android:id ="@+id/layoutLine"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:layout_marginLeft="100dp"-->
+<!--                  android:orientation="vertical">-->
+<!--                  <ImageButton-->
+<!--                      android:id="@+id/btn_line"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="20pt"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="20dp"-->
+<!--                      android:background="@drawable/line_off" />-->
+<!--                  <TextView-->
+<!--                      android:id="@+id/text_line"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="25pt"-->
+<!--                      android:layout_below="@id/btn_line"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="8dp"-->
+<!--                      android:text="Line"/>-->
+<!--              </RelativeLayout>-->
+
+<!--              <RelativeLayout-->
+<!--                  android:id ="@+id/layoutLight"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:layout_marginLeft="200dp"-->
+<!--                  android:orientation="vertical">-->
+<!--                  <ImageButton-->
+<!--                      android:id="@+id/btn_light"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="20pt"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="20dp"-->
+<!--                      android:background="@drawable/light_off" />-->
+<!--                  <TextView-->
+<!--                      android:id="@+id/text_light"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="25pt"-->
+<!--                      android:layout_below="@id/btn_light"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="8dp"-->
+<!--                      android:text="Light"/>-->
+<!--              </RelativeLayout>-->
+
+<!--              <RelativeLayout-->
+<!--                  android:id ="@+id/layoutColor"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:layout_marginLeft="300dp"-->
+<!--                  android:orientation="vertical">-->
+<!--                  <ImageButton-->
+<!--                      android:id="@+id/btn_color"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="20pt"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="20dp"-->
+<!--                      android:background="@drawable/color"/>-->
+<!--                  <TextView-->
+<!--                      android:id="@+id/text_color"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="25pt"-->
+<!--                      android:layout_below="@id/btn_color"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="8dp"-->
+<!--                      android:text="Red"/>-->
+<!--              </RelativeLayout>-->
+
+<!--              <RelativeLayout-->
+<!--                  android:id ="@+id/layoutBtn"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:layout_marginLeft="400dp"-->
+<!--                  android:orientation="vertical">-->
+<!--                  <ImageButton-->
+<!--                      android:id="@+id/btn_btn"-->
+<!--                      android:layout_width="35pt"-->
+<!--                      android:layout_height="20pt"-->
+<!--                      android:layout_marginLeft="20dp"-->
+<!--                      android:layout_marginTop="20dp"-->
+<!--                      android:background="@drawable/button"/>-->
+<!--              </RelativeLayout>-->
+<!--          </RelativeLayout>-->
+<!--      </RelativeLayout>-->
 <!--   </RelativeLayout>-->
-
-
-   <!--   <TextView-->
-   <!--          android:id="@+id/info"-->
-   <!--          android:textStyle="bold|italic"-->
-   <!--          android:layout_width="wrap_content"-->
-   <!--          android:layout_height="wrap_content"/>-->
-   <!--   <TextView-->
-   <!--       android:id="@+id/status"-->
-   <!--       android:textSize="28sp"-->
-   <!--       android:layout_width="wrap_content"-->
-   <!--       android:layout_height="wrap_content"/>-->
-
-   <!--   <ListView-->
-   <!--       android:id="@+id/pairedlist"-->
-   <!--       android:layout_width="match_parent"-->
-   <!--       android:layout_height="match_parent"/>-->
-
-   <!--   <LinearLayout-->
-   <!--       android:id="@+id/inputpane"-->
-   <!--       android:layout_width="match_parent"-->
-   <!--       android:layout_height="wrap_content"-->
-   <!--       android:orientation="vertical"-->
-   <!--       android:visibility="gone">-->
-
-   <!--      <EditText-->
-   <!--          android:id="@+id/input"-->
-   <!--          android:layout_width="match_parent"-->
-   <!--          android:layout_height="wrap_content"/>-->
-   <!--      <Button-->
-   <!--          android:id="@+id/send"-->
-   <!--          android:layout_width="match_parent"-->
-   <!--          android:layout_height="wrap_content"-->
-   <!--          android:text="Sent"/>-->
-
-   <!--   </LinearLayout>-->
-
 </LinearLayout>
 
 

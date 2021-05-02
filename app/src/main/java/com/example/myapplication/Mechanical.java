@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 public class Mechanical extends AppCompatActivity {
     ImageButton backBtn;
+    ImageView openMRangerBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +32,20 @@ public class Mechanical extends AppCompatActivity {
         }
 
         backBtn = (ImageButton) findViewById(R.id.btnBack);
+        openMRangerBtn =(ImageView) findViewById(R.id.ranger_mechanical);
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Mechanical.this, MainActivity.class));
+            }
+        });
+
+        openMRangerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Mechanical.this, pdf_show.class));
             }
         });
     }

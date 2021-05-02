@@ -7,13 +7,6 @@
     android:background="@drawable/bg_music"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Music Interface"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
     <ImageButton
         android:id="@+id/btnMusicBack"
         android:layout_width="wrap_content"
@@ -21,4 +14,326 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/back_icon"/>
+    <ImageButton
+        android:id="@+id/btnConnectBluetooth"
+        android:layout_width="20pt"
+        android:layout_height="20pt"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bluetooth_off" />
+<!--        Start layout outline piano-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@xml/relativelayout_radius_border">
+<!-- ________Layout button above piano___________-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:id="@+id/mornitor_display_piano"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@xml/radius_border_white_bg_color" >
+            </RelativeLayout>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn_merry_chrismas"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/mornitor_display_piano"
+                android:background="@drawable/merry_chrismas"/>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn_hpbd"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/btn_merry_chrismas"
+                android:background="@drawable/hpbd"/>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn_chicken"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/btn_hpbd"
+                android:background="@drawable/chicken"/>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn_star"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/btn_chicken"
+                android:background="@drawable/star"/>
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@xml/radius_border_gray2">
+        <RelativeLayout
+            android:id = "@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@xml/radius_border_gray2">
+        </RelativeLayout>
+        <!--       Layout white pianno button background2-->
+        <RelativeLayout
+            android:layout_below="@+id/top_layout"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:background="@xml/radius_border_white_bg_color" />
+                </LinearLayout>
+            </LinearLayout>
+<!--   _________Layout white button in piano ________-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" >
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="0.5"
+                            android:background="@xml/radius_border_white_color" />
+                    </LinearLayout>
+                </LinearLayout>
+<!--            __________________End white button____________________-->
+<!-- ____Layout black pianno button background2_________________________-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal" >
+<!--                2 background button black-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="110dp"
+                android:layout_weight="0.5">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="40dp"
+                    android:background="@xml/radius_border_gray3"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="40dp"
+                    android:background="@xml/radius_border_gray3"/>
+            </LinearLayout>
+<!--                3 background button black-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="70dp"
+                android:layout_weight="0.5">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="25dp"
+                    android:background="@xml/radius_border_gray3"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="30dp"
+                    android:background="@xml/radius_border_gray3"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="30dp"
+                    android:background="@xml/radius_border_gray3"/>
+            </LinearLayout>
+        </LinearLayout>
+<!--        </LinearLayout>-->
+<!--       Layout black pianno button__________ -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal" >
+<!--                2  button black-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="110dp"
+                    android:layout_weight="0.5">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="40dp"
+                        android:background="@xml/radius_border_gray4"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="40dp"
+                        android:background="@xml/radius_border_gray4"/>
+                </LinearLayout>
+<!--                3  button black-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_weight="0.5">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="25dp"
+                        android:background="@xml/radius_border_gray4"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="30dp"
+                        android:background="@xml/radius_border_gray4"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="30dp"
+                        android:background="@xml/radius_border_gray4"/>
+                </LinearLayout>
+            </LinearLayout>
+<!--            __________________End black button____________________-->
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
 </RelativeLayout>
