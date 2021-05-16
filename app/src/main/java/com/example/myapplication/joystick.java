@@ -102,14 +102,14 @@ public class joystick {
 
     public int getX() {
         if(distance > min_distance && touch_state) {
-            return position_x;
+            return position_x /2;
         }
         return 0;
     }
 
     public int getY() {
         if(distance > min_distance && touch_state) {
-            return position_y;
+            return position_y/2;
         }
         return 0;
     }

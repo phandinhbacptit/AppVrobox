@@ -19,8 +19,7 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".pdf_show"
-            android:screenOrientation="landscape"
-            />.
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Control"
             android:screenOrientation="landscape" />
